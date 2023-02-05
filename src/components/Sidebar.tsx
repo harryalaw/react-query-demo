@@ -3,18 +3,20 @@ import { useMeals } from "../hooks/useMeals";
 
 export function Sidebar() {
   return (
-    <nav className="border-r px-4 pt-4 w-64">
-      <ul className="flex flex-col gap-4">
-        <li>
-          <NavLink to="/"> Home </NavLink>
-        </li>
-        <li>
-          <NavLink to="/meal/new"> New meal </NavLink>
-        </li>
-      </ul>
+    <div className="border-r px-4 pt-4 w-64">
+      <nav>
+        <ul className="flex flex-col gap-4">
+          <li>
+            <NavLink to="/"> Home </NavLink>
+          </li>
+          <li>
+            <NavLink to="/meal/new"> New meal </NavLink>
+          </li>
+        </ul>
+      </nav>
       <br />
       <TopMeals />
-    </nav>
+    </div>
   );
 }
 
