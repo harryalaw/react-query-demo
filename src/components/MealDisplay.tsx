@@ -41,7 +41,7 @@ function MealIdeaCard({
     <Link to={`/meal/${id}`}>
       <li className="border rounded-xl p-4 m-4">
         <div className="text-lg">{name}</div>
-        <div>{rating}/10</div>
+        <div>{rating}</div>
       </li>
     </Link>
   );
