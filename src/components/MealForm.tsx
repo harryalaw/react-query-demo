@@ -63,13 +63,13 @@ export function MealForm({ meal, onSubmitCallback }: MealFormProps) {
       <div>
         <button
           type="submit"
-          className="bg-blue-300 rounded-xl px-3 py-2 ml-32"
+          className="bg-[#84C5F4] rounded-xl px-3 py-2 ml-32"
         >
           Save
         </button>
         <button
           type="button"
-          className="bg-red-300 rounded-xl px-3 py-2 ml-8"
+          className="bg-[#F29B9B] rounded-xl px-3 py-2 ml-8"
           onClick={() => navigate(-1)}
         >
           Cancel

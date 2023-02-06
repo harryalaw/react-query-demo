@@ -17,7 +17,7 @@ function Shell() {
   return (
     <div className="flex flex-row h-full">
       <Sidebar />
-      <div className="flex-grow pl-8 pt-8">
+      <div className="flex-grow pl-8 pt-8 bg-[#FAF9F7]">
         <h1 className="text-5xl pb-8">Meal Ideas</h1>
         <Outlet />
       </div>

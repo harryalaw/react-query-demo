@@ -3,7 +3,7 @@ import { useMeals } from "../hooks/useMeals";
 
 export function Sidebar() {
   return (
-    <div className="border-r px-4 pt-4 w-64">
+    <div className="border-r px-4 pt-4 w-64 bg-[#54D1DB]">
       <nav>
         <ul className="flex flex-col gap-4">
           <li>
