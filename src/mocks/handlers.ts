@@ -48,7 +48,7 @@ export const handlers = [
     if (newMeal.description === "bad") {
       return res(ctx.status(400));
     }
-    editMeal(id, await req.json());
+    editMeal(id, newMeal);
 
     return res(ctx.status(200), ctx.json(meal));
   }),
