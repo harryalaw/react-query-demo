@@ -27,7 +27,7 @@ export function EditMeal() {
 
   const onSubmitCallback = (meal: Meal) =>
     updateMeal(meal).then(
-      () => navigate("/"),
+      () => navigate(-1),
       (error: any) => setError(error?.message ?? "Something went wrong!")
     );
 
