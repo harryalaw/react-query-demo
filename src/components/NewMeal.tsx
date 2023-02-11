@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Meal } from "../types/Meal";
 import { MealForm } from "./MealForm";
 
-async function createMeal(newMeal: Omit<Meal, "id">) {
+async function createMeal(newMeal: Meal) {
   const response = await fetch("/meal", {
     method: "POST",
     body: JSON.stringify(newMeal),
