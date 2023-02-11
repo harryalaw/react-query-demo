@@ -1,6 +1,6 @@
 import { rest } from "msw";
 import { addMeal, getMeals, getById, meals, editMeal } from "./mealMocks";
-import { z } from 'zod';
+import { z } from "zod";
 
 const nextId = (() => {
   let i = meals.length;
@@ -15,12 +15,11 @@ function sleep(ms: number) {
 }
 
 export const mealSchema = z.object({
-    name: z.string().trim().min(1),
-    id: z.string(),
-    description: z.string().optional(),
-    rating: z.number().min(0).max(10),
-})
-
+  name: z.string().trim().min(1),
+  id: z.string(),
+  description: z.string().optional(),
+  rating: z.number().min(0).max(10),
+});
 
 export const handlers = [
   rest.get("/meal", async (_req, res, ctx) => {
