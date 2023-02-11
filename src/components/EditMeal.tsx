@@ -24,12 +24,32 @@ export function EditMeal() {
 
   const { mutate } = useMutation({
     mutationFn: (meal: Meal) => updateMeal(meal),
+    onMutate: async (newMeal: Meal) => {
+      await queryClient.cancelQueries({ queryKey: ["meals"] });
+      const previousMeals = queryClient.getQueryData<Meal[]>(["meals"]) ?? [];
+
+      const newMeals = previousMeals.map((meal) => {
+        if (meal.id === id) {
+          return newMeal;
+        }
+        return meal;
+      });
+
+      queryClient.setQueryData(["meals"], () => newMeals);
+
+      return { previousMeals };
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["meals"] });
       navigate(-1);
     },
-    onError: (error: any) =>
-      setError(error?.message ?? "Something went wrong!"),
+    onError: (error: any, _newTodo, context) => {
+      queryClient.setQueryData(["meals"], context?.previousMeals);
+      setError(error?.message ?? "Something went wrong!");
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["meals"] });
+    },
   });
 
   const navigate = useNavigate();
