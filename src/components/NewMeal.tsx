@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Meal } from "../types/Meal";
@@ -25,12 +26,16 @@ export function NewMealForm() {
 
   const [error, setError] = useState("");
 
-  const onSubmitCallback = (meal: Meal) =>
-    createMeal(meal)
-      .then(() => navigate("/"))
-      .catch((error: any) =>
-        setError(error?.message ?? "Something went wrong!")
-      );
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: (meal: Meal) => createMeal(meal),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["meals"] });
+      navigate("/");
+    },
+    onError: (error: any) =>
+      setError(error?.message ?? "Something went wrong!"),
+  });
 
   return (
     <>
@@ -39,7 +44,7 @@ export function NewMealForm() {
           {error}
         </span>
       ) : null}
-      <MealForm meal={meal} onSubmitCallback={onSubmitCallback} />
+      <MealForm meal={meal} onSubmitCallback={mutate} />
     </>
   );
 }
