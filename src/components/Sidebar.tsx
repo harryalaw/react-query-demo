@@ -23,6 +23,10 @@ export function Sidebar() {
 function TopMeals() {
   const { meals, isError, isLoading } = useMeals();
 
+  const top5Meals = [...(meals ?? [])]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 5);
+
   if (isError) {
     return <span>Something went wrong!</span>;
   }
@@ -38,24 +42,15 @@ function TopMeals() {
   return (
     <>
       <span className="text-lg font-bold"> Top Rated Meals</span>
-      {isError ? (
-        <span>Something went wrong!</span>
-      ) : isLoading ? (
-        <div> Loading ... </div>
-      ) : (
-        <ol className="pl-4">
-          {[...(meals ?? [])]
-            .sort((a, b) => b.rating - a.rating)
-            .slice(0, 5)
-            .map((meal) => (
-              <li key={meal.id}>
-                <span className="overflow-hidden whitespace-nowrap">
-                  {meal.rating} — {meal.name}
-                </span>
-              </li>
-            ))}
-        </ol>
-      )}
+      <ol className="pl-4">
+        {top5Meals.map((meal) => (
+          <li key={meal.id}>
+            <span className="overflow-hidden whitespace-nowrap">
+              {meal.rating} — {meal.name}
+            </span>
+          </li>
+        ))}
+      </ol>
     </>
   );
 }
