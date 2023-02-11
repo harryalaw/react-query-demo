@@ -5,10 +5,14 @@ import { Meal } from "../types/Meal";
 import { MealForm } from "./MealForm";
 
 async function updateMeal(meal: Meal) {
-  await fetch(`/meal/${meal.id}`, {
+  const response = await fetch(`/meal/${meal.id}`, {
     method: "PATCH",
     body: JSON.stringify(meal),
   });
+
+  if (!response.ok) {
+    throw new Error("Failed to update the meal");
+  }
 }
 
 export function EditMeal() {
@@ -26,14 +30,19 @@ export function EditMeal() {
   }
 
   const onSubmitCallback = (meal: Meal) =>
-    updateMeal(meal).then(
-      () => navigate(-1),
-      (error: any) => setError(error?.message ?? "Something went wrong!")
-    );
+    updateMeal(meal)
+      .then(() => navigate(-1))
+      .catch((error: any) =>
+        setError(error?.message ?? "Something went wrong!")
+      );
 
   return (
     <>
-      {error.length > 0 ? { error } : null}
+      {error.length > 0 ? (
+        <span role="alert" className="text-[#BA2525]">
+          {error}
+        </span>
+      ) : null}
       <MealForm meal={meal!} onSubmitCallback={onSubmitCallback} />
     </>
   );

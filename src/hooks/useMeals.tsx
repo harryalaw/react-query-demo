@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { Meal } from "../types/Meal";
 
 export async function fetchMeals() {
-  return await fetch("/meal").then((res) => res.json() as Promise<Meal[]>);
+  const response = await fetch(`/meal`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch the meals");
+  }
+  return (await response.json()) as Promise<Meal[]>;
 }
 
 export function useMeals() {

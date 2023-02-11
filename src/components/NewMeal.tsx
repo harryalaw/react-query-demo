@@ -4,10 +4,14 @@ import { Meal } from "../types/Meal";
 import { MealForm } from "./MealForm";
 
 async function createMeal(newMeal: Omit<Meal, "id">) {
-  await fetch("/meal", {
+  const response = await fetch("/meal", {
     method: "POST",
     body: JSON.stringify(newMeal),
   });
+
+  if (!response.ok) {
+    throw new Error("Failed to create the meal");
+  }
 }
 
 export function NewMealForm() {
@@ -22,14 +26,19 @@ export function NewMealForm() {
   const [error, setError] = useState("");
 
   const onSubmitCallback = (meal: Meal) =>
-    createMeal(meal).then(
-      () => navigate("/"),
-      (error: any) => setError(error?.message ?? "Something went wrong!")
-    );
+    createMeal(meal)
+      .then(() => navigate("/"))
+      .catch((error: any) =>
+        setError(error?.message ?? "Something went wrong!")
+      );
 
   return (
     <>
-      {error.length > 0 ? { error } : null}
+      {error.length > 0 ? (
+        <span role="alert" className="text-[#BA2525]">
+          {error}
+        </span>
+      ) : null}
       <MealForm meal={meal} onSubmitCallback={onSubmitCallback} />
     </>
   );

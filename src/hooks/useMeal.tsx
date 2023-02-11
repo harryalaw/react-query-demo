@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { Meal } from "../types/Meal";
 
 export async function fetchMealById(id: string) {
-  return await fetch(`/meal/${id}`).then((res) => res.json() as Promise<Meal>);
+  const response = await fetch(`/meal/${id}`);
+  if (!response.ok) {
+    throw new Error("Could not find a meal with this id");
+  }
+  return (await response.json()) as Promise<Meal>;
 }
 
 export function useMeal(id: string) {

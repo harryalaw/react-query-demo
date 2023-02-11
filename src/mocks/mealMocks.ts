@@ -20,7 +20,7 @@ export let meals: Meal[] = [
   },
 ];
 
-export function getMeals() {
+export function getMeals(): Meal[] {
   return meals;
 }
 
@@ -38,11 +38,7 @@ export function editMeal(id: string, editedMeal: Meal) {
   });
 }
 
-export function deleteMeal(id: string) {
-  meals = meals.filter((meal) => meal.id !== id);
-}
-
-export function getById(id: string) {
+export function getById(id: string): Meal | null {
   const mealsWithId = meals.filter((meal) => meal.id === id);
 
   if (mealsWithId.length === 1) {
