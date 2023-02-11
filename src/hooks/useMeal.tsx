@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Meal } from "../types/Meal";
 
 export async function fetchMealById(id: string) {
@@ -10,21 +10,8 @@ export async function fetchMealById(id: string) {
 }
 
 export function useMeal(id: string) {
-  const [meal, setMeals] = useState<Meal>();
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetch() {
-      setIsLoading(true);
-      await fetchMealById(id).then(
-        (data) => setMeals(data),
-        () => setIsError(true)
-      );
-      setIsLoading(false);
-    }
-    fetch();
-  }, []);
-
-  return { data: meal, isError, isLoading };
+  return useQuery({
+    queryFn: () => fetchMealById(id),
+    queryKey: ["meals", id],
+  })
 }

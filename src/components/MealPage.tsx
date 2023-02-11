@@ -16,9 +16,9 @@ export function MealPage() {
 
   return (
     <>
-      <h2 className="text-4xl">{meal?.name} </h2>
-      <p className="text-xl">{meal?.rating}/10</p>
-      <p className="py-4">{meal?.description} </p>
+      <h2 className="text-4xl">{meal.name} </h2>
+      <p className="text-xl">{meal.rating}/10</p>
+      <p className="py-4">{meal.description} </p>
       <Link to={"edit"} className="bg-[#84C5F4] px-3 py-2 rounded-xl">
         Edit
       </Link>
