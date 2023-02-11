@@ -15,7 +15,7 @@ export function IdeaDisplay() {
   return (
     <>
       <ul className="flex flex-row flex-wrap">
-        {meals?.map((meal) => (
+        {meals.map((meal) => (
           <MealIdeaCard
             name={meal.name}
             id={meal.id}

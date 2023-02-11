@@ -43,7 +43,7 @@ export function EditMeal() {
           {error}
         </span>
       ) : null}
-      <MealForm meal={meal!} onSubmitCallback={onSubmitCallback} />
+      <MealForm meal={meal} onSubmitCallback={onSubmitCallback} />
     </>
   );
 }
