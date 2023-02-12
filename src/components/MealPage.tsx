@@ -4,7 +4,7 @@ import { useMeal } from "../hooks/useMeal";
 export function MealPage() {
   const { id } = useParams() as { id: string };
 
-  const { meal, isError, isLoading } = useMeal(id);
+  const { data: meal, isError, isLoading } = useMeal(id);
 
   if (isError) {
     return <div> No meal for this id! </div>;

@@ -17,7 +17,7 @@ async function updateMeal(meal: Meal) {
 
 export function EditMeal() {
   const { id } = useParams() as { id: string };
-  const { meal, isLoading, isError } = useMeal(id);
+  const { data: meal, isLoading, isError } = useMeal(id);
 
   const navigate = useNavigate();
   const [error, setError] = useState("");

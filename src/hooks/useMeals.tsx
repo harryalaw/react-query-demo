@@ -26,5 +26,5 @@ export function useMeals() {
     fetch();
   }, []);
 
-  return { meals, isError, isLoading };
+  return { data: meals, isError, isLoading };
 }

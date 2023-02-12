@@ -21,7 +21,7 @@ export function Sidebar() {
 }
 
 function TopMeals() {
-  const { meals, isError, isLoading } = useMeals();
+  const { data: meals, isError, isLoading } = useMeals();
 
   const top5Meals = [...(meals ?? [])]
     .sort((a, b) => b.rating - a.rating)

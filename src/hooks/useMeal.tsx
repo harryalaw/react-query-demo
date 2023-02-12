@@ -26,5 +26,5 @@ export function useMeal(id: string) {
     fetch();
   }, []);
 
-  return { meal, isError, isLoading };
+  return { data: meal, isError, isLoading };
 }

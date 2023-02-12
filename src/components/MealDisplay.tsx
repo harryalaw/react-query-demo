@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useMeals } from "../hooks/useMeals";
 
 export function IdeaDisplay() {
-  const { meals, isError, isLoading } = useMeals();
+  const { data: meals, isError, isLoading } = useMeals();
 
   if (isError) {
     return <div> Oh no my fetch went wrong! </div>;
