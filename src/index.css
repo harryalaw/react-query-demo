@@ -5,7 +5,6 @@
 @layer base {
   #root {
     @apply h-full;
-    @apply bg-violet-300;
   }
 
   body,
