@@ -18,6 +18,55 @@ export let meals: Meal[] = [
     name: "Kung Pao Cauliflower",
     rating: 7.3,
   },
+  {
+    id: "4",
+    name: "Black Bean Burgers",
+    rating: 8.1,
+    description: "Kenji's black bean burgers",
+  },
+  {
+    id: "5",
+    name: "Coconut Dal",
+    rating: 9.1,
+    description: "Meera Sodha's coconut dal",
+  },
+  {
+    id: "6",
+    name: "Soup",
+    rating: 4,
+  },
+  {
+    id: "7",
+    name: "Moussaka",
+    rating: 5.2,
+  },
+  {
+    id: "8",
+    name: "Chipotle Fajita Wrap",
+    rating: 6.1,
+    description: "But how British am I?",
+  },
+  {
+    id: "9",
+    name: "Buffalo Chickpeas",
+    rating: 6.8,
+  },
+  {
+    id: "10",
+    name: "Broccoli Malai Kari",
+    rating: 8.9,
+  },
+  {
+    id: "11",
+    name: "Red Gnocchi",
+    rating: 6.8,
+  },
+  {
+    id: "12",
+    name: "Toad in the hole",
+    rating: 7.3,
+  }
+
 ];
 
 export function getMeals(): Meal[] {
