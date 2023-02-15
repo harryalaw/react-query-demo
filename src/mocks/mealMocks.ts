@@ -65,8 +65,7 @@ export let meals: Meal[] = [
     id: "12",
     name: "Toad in the hole",
     rating: 7.3,
-  }
-
+  },
 ];
 
 export function getMeals(): Meal[] {
