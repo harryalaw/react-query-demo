@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useMeals } from "../hooks/useMeals";
+import { TopMeals } from "./TopMeals";
 
 export function Sidebar() {
   return (
-    <div className="border-r px-4 pt-4 w-64 bg-[#54D1DB]">
+    <div className="border-r px-4 pt-4 w-56 bg-[#54D1DB] flex-shrink-0">
       <nav>
         <ul className="flex flex-col gap-4">
           <li>
@@ -20,37 +20,3 @@ export function Sidebar() {
   );
 }
 
-function TopMeals() {
-  const { data: meals, isError, isLoading } = useMeals();
-
-  const top5Meals = [...(meals ?? [])]
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 5);
-
-  if (isError) {
-    return <span>Something went wrong!</span>;
-  }
-  if (isLoading) {
-    return (
-      <>
-        <span className="text-lg font-bold"> Top Rated Meals</span>
-        <div> Loading ... </div>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <span className="text-lg font-bold"> Top Rated Meals</span>
-      <ol className="pl-4">
-        {top5Meals.map((meal) => (
-          <li key={meal.id}>
-            <span className="overflow-hidden whitespace-nowrap">
-              {meal.rating} — {meal.name}
-            </span>
-          </li>
-        ))}
-      </ol>
-    </>
-  );
-}
