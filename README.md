@@ -1,10 +1,14 @@
 # React Query Demo
 
-Demo application to show how to add tanstack query to a simple application to show off queries/mutations. Used as the live coding section of an internal talk on what Tanstack Query is and how it can be added to an application to improve the user experience.
+This is a demo application I created to show how using Tanstack Query could help improve the UX and DX of an application. I used it as a live demo during a longer internal talk about what Tanstack Query is.
 
-The application lets you curate meal ideas that you could have, give them ratings with the aim to help decide what to have for dinner. Data is pre-set using MSW and a json data file, but can be added to and edited.
+The base app allowed a user to add meal ideas, rate them and provide descriptions along with the ability to edit ones they've already added. As this is a demo, all the data was mocked out and provided through MSW.
 
-The `main` branch shows the state before any changes and the `react-query` branch shows how it could look after adding queries and mutations.
+The aim of the demo was to show how you could simplify state management, dedupe calls and reduce visible loading states by using Tanstack Query.
+
+The `main` branch shows the state before any changes where I started the live demo and the `react-query` branch shows how it could look after adding queries and mutations.
+
+A live version of the Tanstack-ed version can be found at: https://food-ideas-demo.vercel.app/
 
 # Running
 
